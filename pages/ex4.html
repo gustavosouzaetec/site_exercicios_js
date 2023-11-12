@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/style.css">
+   
+    <title>Atividade</title>
+ 
+</head>
+<body>
+ 
+    <form action="post">
+        Quilometragem percorrida: <input type="text" id="km"> <br> <br>
+        Valor do combustível: <input type="text" id="gasolina"> <br> <br>
+        <input type="button" id="calcular" value="Calcular" onclick="gastoVeiculo()">
+    </form>
+    <br>
+    <p id="resultado"></p>
+   
+    <script>
+        function gastoVeiculo() {
+            const percLitro = 8;
+            var kmPerc = parseFloat(document.getElementById('km').value);
+            var valorCom = parseFloat(document.getElementById('gasolina').value);
+ 
+            document.getElementById('resultado').innerHTML=(`O valor gasto, considerando que o veículo percorre 8km/litro, é: ${(kmPerc * valorCom) / percLitro}`);
+ 
+            try {
+                if (isNaN(kmPerc) || isNaN(valorCom)) throw 'Valor(es) inválido(s)';
+            } catch (error) {
+                document.getElementById('resultado').innerHTML=(error);
+            }
+        }
+    </script>
+ 
+</body>
+</html>

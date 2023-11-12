@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/style.css">
+ 
+    <title>Atividades</title>
+ 
+</head>
+<body>
+ 
+    <form action="" method="post">
+        Digite o valor da temperatura em °C ou °F: <input type="text" id="temp" onblur="cel_fah()">
+        <br><br>
+        <input type="button" onclick="fah_cel()" value="Celsius" id="celsius">
+        <input type="button" onclick="cel_fah()" value="Fahrenheit" id="fahrenheit">
+    </form>
+    <br>
+    <p id="resultado"></p>
+   
+    <script>
+        function fah_cel() {
+            var temp = parseFloat(document.getElementById('temp').value);
+            var temp_fah = (temp * 1.8) + 32;
+            document.getElementById('resultado').innerHTML=('A temperatura digitada, em °F, é: ' + temp_fah);
+            try {
+                if (isNaN(temp)) throw 'Valor inválido';
+            } catch (error) {
+                document.getElementById('resultado').innerHTML=(error);
+            }
+        }
+
+        function cel_fah() {
+            var temp = parseFloat(document.getElementById('temp').value);
+            var temp_celsius = (temp - 32) / 1.8;
+            document.getElementById('resultado').innerHTML=('A temperatura digitada, em °C, é: ' + temp_celsius);
+            try {
+                if (isNaN(temp)) throw 'Valor inválido';
+            } catch (error) {
+                document.getElementById('resultado').innerHTML=(error);
+            }
+        }
+    </script>
+ 
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/style.css">
+   
+    <title>Atividade</title>
+ 
+</head>
+<body>
+ 
+    <form action="post">
+        Comprimento do cômodo: <input type="text" id="comp"> <br> <br>
+        Largura do cômodo: <input type="text" id="larg"> <br> <br>
+        <input type="button" id="calcular" value="Calcular" onclick="calcularCusto()">
+    </form>
+    <br>
+    <p id="resultado"></p>
+   
+    <script>
+        function calcularCusto() {
+            const precoM2 = 36;
+            var comp = parseFloat(document.getElementById('comp').value);
+            var larg = parseFloat(document.getElementById('larg').value);
+ 
+            document.getElementById('resultado').innerHTML=(`O preço total para assentar o piso é: R$${(comp * larg) / precoM2}`);
+ 
+            try {
+                if (isNaN(comp) || isNaN(larg)) throw 'Valor(es) inválido(s)';
+            } catch (error) {
+                document.getElementById('resultado').innerHTML=(error);
+            }
+        }
+    </script>
+ 
+</body>
+</html>

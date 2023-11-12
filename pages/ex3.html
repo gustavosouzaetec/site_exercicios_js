@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="../css/style.css">
+
+    <title>Atividades</title>
+ 
+</head>
+<body>
+ 
+    <form action="" method="post">
+        Digite o nome do primeiro, segundo e terceiro produto, respectivamente: <br>
+        1°: <input type="text" id="p1">
+        2°: <input type="text" id="p2">
+        3°: <input type="text" id="p3">
+        <br> <br>
+        Digite o valor do primeiro, segundo e terceiro produto, respectivamente: <br>
+        1°: <input type="text" id="vp1">
+        2°: <input type="text" id="vp2">
+        3°: <input type="text" id="vp3">
+        <br> <br>
+        Digite a quantidade comprada do primeiro, segundo e terceiro produto, respectivamente: <br>
+        1°: <input type="text" id="qp1">
+        2°: <input type="text" id="qp2">
+        3°: <input type="text" id="qp3">
+        <br> <br>
+        <input type="button" id="calcular" value="Calcular preço total" onclick="valorTotal()">
+    </form>
+    <br>
+    <p id="resultado"></p>
+   
+    <script>
+        function valorTotal() {
+            var nomes = [document.getElementById('p1').value, document.getElementById('p2').value, document.getElementById('p3').value];
+            var precos = [parseFloat(document.getElementById('vp1').value), parseFloat(document.getElementById('vp2').value), parseFloat(document.getElementById('vp3').value)];
+            var quantidades = [parseInt(document.getElementById('qp1').value), parseInt(document.getElementById('qp2').value), parseInt(document.getElementById('qp3').value)];
+
+            document.getElementById('resultado').innerHTML=(`O total do valor da compra é: ${((precos[0] * quantidades[0]) + (precos[1] * quantidades[1]) + (precos[2] * quantidades[2])).toFixed(2)}. <br> Onde, <br> O produto ${nomes[0]} custou, no total, ${(precos[0] * quantidades[0]).toFixed(2)}; <br> O produto ${nomes[1]} custou, no total, ${(precos[1] * quantidades[1]).toFixed(2)}; <br> O produto ${nomes[2]} custou, no total, ${(precos[2] * quantidades[2]).toFixed(2)}. <br>`);
+
+            for (var i = 0; i < 3; i++) {
+                if (isNaN(precos[i]) || isNaN(quantidades[i])) {
+                    document.getElementById('resultado').innerHTML=('Valor(es) inserido(s) inválido(s).');
+                    break;
+                }
+            }
+        }
+    </script>
+ 
+</body>
+</html>

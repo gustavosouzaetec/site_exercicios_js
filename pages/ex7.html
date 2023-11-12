@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/style.css">
+   
+    <title>Atividades</title>
+
+</head>
+<body>
+   
+    <form action="post">
+        Digite quantos valores numéricos lhe forem convenientes: <input type="text" id="nums">
+        <input type="button" value="Adicionar" onclick="adicionar()"> <br> <br>
+        <input type="button" value="Mostrar todos os valores digitados" onclick="mostrarTodos()">
+        <input type="button" value="Mostrar o maior valor digitado" onclick="mostrarMaior()">
+        <input type="button" value="Mostrar o menor valor digitado" onclick="mostrarMenor()">
+        <input type="button" value="Limpar" onclick="window.location.reload()">
+    </form>
+    <br>
+    <p id="resultado"></p>
+ 
+    <script>
+        var numerosDigitados = [];
+
+        function adicionar() {
+            var num = parseInt(document.getElementById('nums').value);
+            if (isNaN(num)) {
+                document.getElementById('resultado').innerHTML=('Número inválido.');
+            } else {
+                numerosDigitados.push(num);
+            }
+            document.getElementById('nums').value = "";
+            document.getElementById('nums').focus();
+        }
+
+        function mostrarTodos() {
+            document.getElementById('resultado').innerHTML=('');
+            if (numerosDigitados.length > 0) {
+                document.getElementById('resultado').innerHTML=(`Todos os números digitados foram: ${numerosDigitados.join(', ')}.`);
+            } else {
+                document.getElementById('resultado').innerHTML=('Nenhum valor fora digitado.');
+            }            
+        }
+
+        function mostrarMaior() {
+            document.getElementById('resultado').innerHTML=('');
+            if (numerosDigitados.length > 0) {
+                let maior = 0;
+                for (var i = 0; i < numerosDigitados.length; i ++) {
+                    if (numerosDigitados[i] > maior) {
+                        maior = numerosDigitados[i];
+                    }
+                }
+                document.getElementById('resultado').innerHTML=(`O maior número digitado fora: ${maior}.`);
+            } else {
+                document.getElementById('resultado').innerHTML=('Nenhum valor fora digitado.');
+            }
+        }
+
+        function mostrarMenor() {
+            document.getElementById('resultado').innerHTML=('');
+            if (numerosDigitados.length > 0) {
+                let menor = numerosDigitados[0];
+                for (var i = 0; i < numerosDigitados.length; i ++) {
+                    if (numerosDigitados[i] < menor) {
+                        menor = numerosDigitados[i];
+                    }
+                }
+                document.getElementById('resultado').innerHTML=(`O menor número digitado fora: ${menor}.`);
+            } else {
+                document.getElementById('resultado').innerHTML=('Nenhum valor fora digitado.');
+            }
+        }
+    </script>
+ 
+</body>
+</html>
